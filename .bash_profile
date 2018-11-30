@@ -1,13 +1,24 @@
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+if [ -d /usr/local/share/android-sdk ]; then
+  export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+fi
 
-# Load rbenv automatically (https://github.com/rbenv/rbenv#homebrew-on-mac-os-x)
 if [ $(which rbenv) ]; then
   eval "$(rbenv init -)"
 fi
 
-# Load byobu prefix if installed
 if [ $(which byobu) ]; then
   export BYOBU_PREFIX=/usr/local
+  _byobu_sourced=1 . /usr/local/bin/byobu-launch 2>/dev/null || true
+fi
+
+if [ $(which brew) ]; then
+  export PATH="/usr/local/sbin:$PATH"
+  export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+fi
+
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+  . /usr/local/share/bash-completion/bash_completion
 fi
 
 # Source all .dot files, starting with .extra, which shouldn't be committed
@@ -17,11 +28,6 @@ for file in ~/.{extra,bash_prompt,exports,aliases}; do
   fi
 done
 unset file
-
-# Brew bash completion
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-  . /usr/local/share/bash-completion/bash_completion
-fi
 
 # Prompt fix for Gnome
 if [ -z "$COLORTERM" ] && cat /proc/$PPID/exe 2> /dev/null | grep -q gnome-terminal; then
@@ -49,4 +55,3 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 shopt -s nocaseglob;
 export PATH="/usr/local/opt/heimdal/sbin:$PATH"
 export PATH="~/go/bin:$PATH"
-_byobu_sourced=1 . /usr/local/Cellar/byobu/5.127/bin/byobu-launch 2>/dev/null || true
