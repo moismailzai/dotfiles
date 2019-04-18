@@ -1,3 +1,21 @@
-[submodule ".vim/bundle/.vim/bundle/Vundle.vim"]
-	path = .vim/bundle/.vim/bundle/Vundle.vim
+[submodule "Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "Vundle.vim"]
+	path = .vim/bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
+[submodule "vim-eunuch"]
+	path = .vim/bundle/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch
+[submodule "vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim-polyglot"]
+	path = .vim/bundle/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/powerline/powerline
