@@ -66,7 +66,6 @@ The script installs these command-line tools via Homebrew:
 - [Python](https://www.python.org/)
 - [Terraform](https://www.terraform.io/)
 - [Starship](https://starship.rs/)
-- [tmux](https://github.com/tmux/tmux)
 - [Vim](https://www.vim.org/)
 - [wget](https://www.gnu.org/software/wget/)
 - [Zellij](https://zellij.dev/)
