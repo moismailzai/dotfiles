@@ -1,0 +1,181 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Creates symbolic links for all dotfiles in this directory to your home directory,
+# and for the contents of specified subdirectories like .config and .ssh.
+# Only the first level of items in each directory is symlinked.
+# Files matching $FILES_NOT_TO_SYMLINK_REGEX are excluded from being symlinked.
+
+# ## Configuration variables ##########################################################################################
+FILES_NOT_TO_SYMLINK_REGEX="git|gitignore|gitmodules|idea|README.md|symlinkctl"
+DIRECTORIES_TO_TRAVERSE=(".config" ".ssh")
+REQUIRED_COMMANDS=("alacritty" "date" "delta" "find" "git" "grep" "logname" "ln" "mv" "ps" "readlink" "sed" "starship" "tput" "tr" "uname" "vim" "vivid" "zellij")
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+DEBUG=true
+######################################################################################################################
+
+# Function to print debug information
+debug() {
+    if [[ "$DEBUG" = true ]]; then
+        echo "DEBUG: $*" >&2
+    fi
+}
+
+# Error handling function
+error() {
+    echo "ERROR: $*" >&2
+    exit 1
+}
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Function to check if required commands are available
+check_required_commands() {
+    debug "Checking required commands"
+    local missing_commands=()
+    for cmd in "${REQUIRED_COMMANDS[@]}"; do
+        if ! command_exists "$cmd"; then
+            missing_commands+=("$cmd")
+        fi
+    done
+
+    if [ ${#missing_commands[@]} -ne 0 ]; then
+        error "The following required commands are missing: ${missing_commands[*]}"
+    fi
+    debug "All required commands are available"
+}
+
+# Function to create symlink
+create_symlink() {
+    local source="$1"
+    local dest="$2"
+
+    debug "Creating symlink: $source -> $dest"
+
+    if [[ -e "$dest" || -L "$dest" ]]; then
+        if [[ "$(readlink -f "$dest")" != "$source" ]]; then
+            local backup_dest="${dest}.backup"
+            debug "Backing up existing file: $dest -> $backup_dest"
+            mv "$dest" "$backup_dest" || error "Failed to backup $dest"
+            printf "\e[0;33m  Backed up: %s → %s\e[0m\n" "$dest" "$backup_dest"
+        else
+            debug "Symlink already exists and points to the correct location"
+            return
+        fi
+    fi
+
+    ln -sf "$source" "$dest" || error "Failed to create symlink from $source to $dest"
+    printf "\e[0;32m  [✔] Created symlink: %s → %s\e[0m\n" "$source" "$dest"
+}
+
+# Function to enable symlinks
+enable() {
+    local dotfiles_dir="$1"
+    local home_dir="$2"
+    local subdir="$3"
+
+    debug "Enabling symlinks for $subdir in $dotfiles_dir"
+    debug "Home directory: $home_dir"
+
+    local target_dir="$home_dir"
+    if [[ $subdir == ".config" ]]; then
+        target_dir="$XDG_CONFIG_HOME"
+    elif [[ $subdir != "./" ]]; then
+        target_dir="$home_dir/$subdir"
+    fi
+
+    mkdir -p "$target_dir"
+
+    local search_dir="$dotfiles_dir/$subdir"
+    if [[ $subdir == "./" ]]; then
+        search_dir="$dotfiles_dir"
+    fi
+
+    debug "Searching in: $search_dir"
+    debug "Target directory: $target_dir"
+
+    find "$search_dir" -maxdepth 1 -mindepth 1 | grep -vE "$FILES_NOT_TO_SYMLINK_REGEX" | while IFS= read -r item; do
+        local basename_item
+        basename_item=$(basename "$item")
+
+        # Skip .config and .ssh when processing root directory
+        if [[ $subdir == "./" && " ${DIRECTORIES_TO_TRAVERSE[@]} " =~ " $basename_item " ]]; then
+            debug "Skipping $basename_item in root directory"
+            continue
+        fi
+
+        debug "Processing item: $item"
+        local source
+        source=$(readlink -f "$item") || error "Failed to resolve source path for $item"
+        local dest="$target_dir/$basename_item"
+
+        create_symlink "$source" "$dest"
+    done
+
+    debug "Finished processing $subdir"
+}
+
+# Function to disable symlinks
+disable() {
+    debug "Disabling symlinks"
+    local dirs_to_check=("$HOME" "$XDG_CONFIG_HOME" "$HOME/.ssh")
+    for dir in "${dirs_to_check[@]}"; do
+        debug "Checking directory: $dir"
+        find "$dir" -maxdepth 1 -type l | while IFS= read -r linked_file; do
+            debug "Processing linked file: $linked_file"
+            local link_target
+            link_target=$(readlink -f "$linked_file") || error "Failed to resolve link target for $linked_file"
+            debug "Link target: $link_target"
+            if [[ $link_target == "$(pwd)"* ]]; then
+                printf "\e[0;33m [✔] Removing linked file %s\e[0m\n" "$linked_file"
+                rm "$linked_file" || error "Failed to remove symlink $linked_file"
+            fi
+        done
+    done
+    debug "Finished disabling symlinks"
+}
+
+# Main execution
+main() {
+    debug "Starting main execution"
+    check_required_commands
+
+    case "$1" in
+        enable)
+            debug "Enabling dotfiles"
+            mkdir -p ~/.ssh/control || error "Failed to create ~/.ssh/control directory"
+            chmod 0600 .ssh/config 2>/dev/null || debug "Failed to set permissions for .ssh/config"
+            chmod 0600 .ssh/environment 2>/dev/null || debug "Failed to set permissions for .ssh/environment"
+            enable "$(pwd)" "$HOME" "./"
+            for dir in "${DIRECTORIES_TO_TRAVERSE[@]}"; do
+                enable "$(pwd)" "$HOME" "$dir"
+            done
+            if command_exists vim; then
+                vim +PluginInstall +qall || error "Failed to run vim PluginInstall"
+            else
+                debug "Warning: vim is not installed. Skipping plugin installation."
+            fi
+            ;;
+        disable)
+            debug "Disabling dotfiles"
+            disable
+            ;;
+        *)
+            error "Please enter an argument: enable or disable"
+            ;;
+    esac
+    debug "Finished main execution"
+}
+
+# Run the script
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if [[ $# -eq 0 ]]; then
+        error "No argument provided. Please use 'enable' or 'disable'."
+    else
+        main "$1"
+    fi
+fi

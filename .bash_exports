@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# LESS colors for man pages
+LESS_TERMCAP_mb=$(tput -T ansi blink)                # start bold
+LESS_TERMCAP_md=$(tput -T ansi setaf 2 ; tput -T ansi bold) # start bold
+LESS_TERMCAP_me=$(tput -T ansi sgr0)                 # turn off bold, blink and underline
+LESS_TERMCAP_so=$(tput -T ansi smso)                 # start standout (reverse video)
+LESS_TERMCAP_se=$(tput -T ansi rmso)                 # stop standout
+LESS_TERMCAP_us=$(tput -T ansi smul)                 # start underline
+LESS_TERMCAP_ue=$(tput -T ansi rmul)                 # stop underline
+
+# History configuration
+export HISTTIMEFORMAT='%F %T '
+export HISTCONTROL=ignoreboth:erasedups  # ignoreboth = ignorespace:ignoredups
+export HISTSIZE=100000
+export HISTFILESIZE=$HISTSIZE
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"  # Commands to ignore in history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# General environment settings
+export CLICOLOR_FORCE=1
+export EDITOR="vim"
+export VISUAL="vim"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export MANPAGER="less -X"
+export PAGER="less"
+export LESS="-R"
+
+# Export LESS color settings
+export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me LESS_TERMCAP_se LESS_TERMCAP_so LESS_TERMCAP_ue LESS_TERMCAP_us
+
+# XDG Base Directory specification
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# Color settings
+export TERM="xterm-256color"
+export COLORTERM="truecolor"
+
+# Node Version Manager (if installed)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Python settings
+export PYTHONDONTWRITEBYTECODE=1  # Prevent Python from writing .pyc files
+export PYTHONUNBUFFERED=1  # Prevent Python from buffering stdout and stderr
+
+# Rust settings (if Rust is installed)
+[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
+
+# macOS specific settings
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+    export HOMEBREW_NO_ENV_HINTS=1
+    export HOMEBREW_NO_ANALYTICS=1
+
+    if [[ -x /opt/homebrew/bin/brew ]]; then
+        HOMEBREW_PREFIX="/opt/homebrew"  # For Apple Silicon Macs
+    elif [[ -x /usr/local/bin/brew ]]; then
+        HOMEBREW_PREFIX="/usr/local"     # For Intel Macs
+    else
+        echo "Homebrew not found. Please install Homebrew and try again."
+        return 1
+    fi
+
+    export HOMEBREW_PREFIX
+
+    # Update PATH
+    PATH="$HOME/bin:$PATH"
+    PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+    PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
+    PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+    PATH="$HOMEBREW_PREFIX/bin:$PATH"
+    PATH="$HOMEBREW_PREFIX/sbin:$PATH"
+    export PATH
+
+    # Use GNU versions of tools on macOS if available
+    [[ -d "/usr/local/opt/grep/libexec/gnubin" ]] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+    [[ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]] && PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    [[ -d "/usr/local/opt/gnu-tar/libexec/gnubin" ]] && PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+    [[ -d "/usr/local/opt/gnu-which/libexec/gnubin" ]] && PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
+fi
+
+# Add local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"

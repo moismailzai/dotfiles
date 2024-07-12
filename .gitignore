@@ -1,0 +1,4 @@
+.idea
+.config/vim/undodir/
+.config/vim/bundle/
+!.config/vim/bundle/Vundle.vim

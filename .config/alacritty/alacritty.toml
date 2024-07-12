@@ -1,0 +1,127 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#666666"
+blue = "#7aa6da"
+cyan = "#54ced6"
+green = "#9ec400"
+magenta = "#b77ee0"
+red = "#ff3334"
+white = "#2a2a2a"
+yellow = "#e7c547"
+
+[colors.normal]
+black = "#000000"
+blue = "#7aa6da"
+cyan = "#70c0ba"
+green = "#b9ca4a"
+magenta = "#c397d8"
+red = "#d54e53"
+white = "#424242"
+yellow = "#e6c547"
+
+[colors.primary]
+background = "#000000"
+foreground = "#eaeaea"
+
+[cursor]
+style = "Beam"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 3
+y = 2
+
+[keyboard]
+
+bindings = [
+    # sourced from https://github.com/alex35mil/dotfiles
+    ### Zellij
+
+    # Print char: `printf '\uE021'`
+
+    { key = "T", mods = "Command",       chars = "\uF429" },
+    { key = "N", mods = "Control",       chars = "\uF89C" },
+    { key = "N", mods = "Command|Shift", chars = "\uF0FE" },
+    { key = "R", mods = "Command",       chars = "\uF1FC" },
+    { key = "B", mods = "Command",       chars = "\uF5CC" },
+    { key = "M", mods = "Command",       chars = "\uF792" },
+    { key = "O", mods = "Command",       chars = "\uF826" },
+    { key = "F", mods = "Command",       chars = "\uF422" },
+    { key = "W", mods = "Control",       chars = "\uF2D3" },
+    { key = "Q", mods = "Control",       chars = "\uF090" },
+
+    { key = "Left",  mods = "Shift", chars = "\uFC2F" },
+    { key = "Right", mods = "Shift", chars = "\uFC32" },
+    { key = "Up",    mods = "Shift", chars = "\uFC35" },
+    { key = "Down",  mods = "Shift", chars = "\uFC2C" },
+
+    { key = "Left",  mods = "Control|Shift", chars = "\uEA9B" },
+    { key = "Right", mods = "Control|Shift", chars = "\uEA9C" },
+    { key = "Up",    mods = "Control|Shift", chars = "\uEAA1" },
+    { key = "Down",  mods = "Control|Shift", chars = "\uEA9A" },
+
+    { key = "Left",  mods = "Option|Shift", chars = "\uF0D9" },
+    { key = "Right", mods = "Option|Shift", chars = "\uF0DA" },
+    { key = "Up",    mods = "Option|Shift", chars = "\uF0D8" },
+    { key = "Down",  mods = "Option|Shift", chars = "\uF0D7" },
+
+    { key = "Up",    mods = "Option",       chars = "\uF271" },
+    { key = "R",     mods = "Option",       chars = "\uF448" },
+    { key = "W",     mods = "Option",       chars = "\uF273" },
+    { key = "Left",  mods = "Option",       chars = "\uF04A" },
+    { key = "Right", mods = "Option",       chars = "\uF04E" },
+    { key = "Left",  mods = "Option|Shift", chars = "\uF049" },
+    { key = "Right", mods = "Option|Shift", chars = "\uF050" },
+
+    { key = "Up", mods = "Command",        chars = "\uF106" },
+    { key = "Down", mods = "Command",        chars = "\uF107" },
+    { key = "Up", mods = "Command|Shift", chars = "\uF102" },
+    { key = "Down", mods = "Command|Shift", chars = "\uF103" },
+    { key = "Up", mods = "Command|Option|Shift", chars = "\uF6BB" },
+    { key = "Down", mods = "Command|Option|Shift", chars = "\uF6BA" },
+]
+
+[scrolling]
+history = 99999
+
+[selection]
+save_to_clipboard = true
+
+[shell]
+program = "/bin/bash"
+args = ["-ilc", "source ~/.bash_functions && start_zellij"]
+
+[window]
+opacity = 0.98
+
+[window.dimensions]
+columns = 150
+lines = 40
+
+[window.padding]
+x = 8
+y = 4
+
