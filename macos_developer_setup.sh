@@ -186,16 +186,11 @@ Setup complete! Additional steps to take:
    - Add: -Didea.case.sensitive.fs=true
    - Run: git config --global --add safe.directory ~/dev/boxes/sgs/www (or your project path)
 
-2. Copy your private key to ~/.ssh/mismailzai.ed25519
-
-3. Set up dotfiles:
+2. Set up dotfiles:
    - cd ~/dotfiles
    - Run: source .bash_exports && ./symlinkctl enable
 
-4. Set up starship:
-   - starship preset pastel-powerline -o ~/.starship.toml
-
-5. Exit terminal and run alacritty.
+3. Exit terminal and run alacritty.
 
 Please reboot your system to ensure all changes take effect.
 EOF
