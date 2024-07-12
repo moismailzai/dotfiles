@@ -155,22 +155,10 @@ if [ ! -d "$HOME/dotfiles" ]; then
     run_command git clone --recursive https://github.com/moismailzai/dotfiles "$HOME/dotfiles"
 fi
 
-# Update .bashrc
-echo '[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"' >> "$HOME/dotfiles/.bashrc"
-
-# Update .bash_exports
-cat << EOF >> "$HOME/dotfiles/.bash_exports"
-export HOMEBREW_NO_ENV_HINTS=1
-export STARSHIP_CONFIG=~/.starship.toml
-export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="$HOMEBREW_PREFIX/bin:\$PATH"
-export BASH_SILENCE_DEPRECATION_WARNING=1
-EOF
-
 # Copy SSH private key
 echo "Copying SSH private key..."
-run_command cp "$SSH_PRIVATE_KEY_PATH" "$HOME/.ssh/mismailzai.ed25519"
-run_command chmod 600 "$HOME/.ssh/mismailzai.ed25519"
+run_command cp "$SSH_PRIVATE_KEY_PATH" "$HOME/.ssh/"
+run_command chmod 600 "$HOME/.ssh/$SSH_PRIVATE_KEY_PATH"
 
 # Configure Git
 echo "Configuring Git..."
