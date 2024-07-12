@@ -8,11 +8,11 @@ set -euo pipefail
 # Files matching $FILES_NOT_TO_SYMLINK_REGEX are excluded from being symlinked.
 
 # ## Configuration variables ##########################################################################################
-FILES_NOT_TO_SYMLINK_REGEX="git|gitignore|gitmodules|idea|README.md|symlinkctl"
+FILES_NOT_TO_SYMLINK_REGEX="git|gitignore|gitmodules|idea|macos_developer_setup.sh|README.md|symlinkctl"
 DIRECTORIES_TO_TRAVERSE=(".config" ".ssh")
 REQUIRED_COMMANDS=("alacritty" "date" "delta" "find" "git" "grep" "logname" "ln" "mv" "ps" "readlink" "sed" "starship" "tput" "tr" "uname" "vim" "vivid" "zellij")
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-DEBUG=true
+DEBUG=false
 ######################################################################################################################
 
 # Function to print debug information
