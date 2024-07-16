@@ -137,6 +137,7 @@ brew_formulae=(
     packer
     python
     terraform
+    rust
     starship
     vim
     wget
@@ -147,6 +148,13 @@ run_command brew install -q --cask "${brew_casks[@]}"
 run_command brew install -q --cask --no-quarantine alacritty
 run_command brew install -q "${brew_formulae[@]}"
 
+cargo_apps=(
+)
+# If cargo apps array isn't empty
+if [ ${#cargo_apps[@]} -gt 0 ]; then
+    run_command cargo install --locked --quiet "${cargo_apps[@]}"
+fi
+
 # Set up dotfiles
 echo "Setting up dotfiles..."
 mkdir -p "$HOME/.ssh/control"
@@ -154,6 +162,9 @@ mkdir -p "$HOME/.ssh/control"
 if [ ! -d "$HOME/dotfiles" ]; then
     run_command git clone --recursive https://github.com/moismailzai/dotfiles "$HOME/dotfiles"
 fi
+
+# Update .bashrc
+echo '[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"' >> "$HOME/dotfiles/.bashrc"
 
 # Copy SSH private key
 echo "Copying SSH private key..."
