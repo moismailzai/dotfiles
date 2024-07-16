@@ -397,11 +397,11 @@ copy_on_select true
 
 // The folder in which Zellij will look for layouts
 //
-layout_dir "$HOME/.config/zellij/layouts"
+//layout_dir "$HOME/.config/zellij/layouts"
 
 // The folder in which Zellij will look for themes
 //
-//theme_dir "$HOME/.config/zellij/plugins"
+//theme_dir "$HOME/.config/zellij/themes"
 
 ui {
     pane_frames {

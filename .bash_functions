@@ -41,9 +41,9 @@ function start_zellij() {
     # Check if a Zellij session named "main" exists
     if zellij list-sessions 2>/dev/null | grep -q "main"; then
         # If it exists, attach to it
-        zellij attach main
+        zellij --config-dir "$HOME/.config/zellij" --data-dir "$HOME/.config/zellij/plugins" --layout default attach main
     else
         # If it doesn't exist, create a new session named "main"
-        zellij --session main
+        zellij --config-dir "$HOME/.config/zellij" --data-dir "$HOME/.config/zellij/plugins" --layout default --session main
     fi
 }

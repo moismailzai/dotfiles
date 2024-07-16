@@ -50,6 +50,9 @@ export PYTHONUNBUFFERED=1  # Prevent Python from buffering stdout and stderr
 # Rust settings (if Rust is installed)
 [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
 
+# Starship settings
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+
 # macOS specific settings
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export BASH_SILENCE_DEPRECATION_WARNING=1
