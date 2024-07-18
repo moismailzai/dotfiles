@@ -146,9 +146,9 @@ brew_formulae=(
     zellij
 )
 
-run_command brew install -q --cask "${brew_casks[@]}"
-run_command brew install -q --cask --no-quarantine alacritty
-run_command brew install -q "${brew_formulae[@]}"
+run_command brew install --force -q --cask "${brew_casks[@]}"
+run_command brew install --force -q --cask --no-quarantine alacritty
+run_command brew install --force -q "${brew_formulae[@]}"
 
 cargo_apps=(
 )
