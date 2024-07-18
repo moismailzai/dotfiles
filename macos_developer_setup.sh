@@ -134,6 +134,7 @@ brew_formulae=(
     git
     git-delta
     gnu-sed
+    node
     packer
     python
     terraform
@@ -141,6 +142,7 @@ brew_formulae=(
     starship
     vim
     wget
+    yarn
     zellij
 )
 
