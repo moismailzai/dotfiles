@@ -41,6 +41,7 @@ rust = "#FF4500"
 clang = "#1E90FF"
 duration = "#FF1493"
 text_color = "#F0F0F0"
+text_dark = "#1C1C2C"
 text_light = "#0C0C1E"
 
 [username]
