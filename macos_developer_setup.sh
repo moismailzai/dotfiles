@@ -170,7 +170,7 @@ echo '[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBR
 
 # Copy SSH private key
 echo "Copying SSH private key..."
-run_command cp "$SSH_PRIVATE_KEY_PATH" "$HOME/.ssh/"
+run_command cp "$SSH_PRIVATE_KEY_PATH" "$HOME/.ssh/" || true
 run_command chmod 600 "$HOME/.ssh/$SSH_PRIVATE_KEY_PATH"
 
 # Configure Git
