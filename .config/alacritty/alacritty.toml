@@ -1,34 +1,36 @@
-# colors from https://github.com/eendroroy/alacritty-theme/blob/master/themes/cyber_punk_neon.yaml
+# Cyberpunk-inspired Alacritty Configuration
+
+# Colors
 [colors]
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "0x1c61c2"
-red = "0xff0000"
-green = "0xd300c4"
-yellow = "0xf57800"
-blue = "0x00ff00"
-magenta = "0x711c91"
-cyan = "0x0abdc6"
-white = "0xd7d7d5"
+black = "#1C1C2C"
+red = "#FF0000"
+green = "#00FF00"
+yellow = "#FFA500"
+blue = "#00FFFF"
+magenta = "#FF00FF"
+cyan = "#00FFFF"
+white = "#F0F0F0"
 
 [colors.cursor]
-text = "0x000b1e"
-cursor = "0x0abdc6"
+text = "#0C0C1E"
+cursor = "#00FFFF"
 
 [colors.normal]
-black = "0x123e7c"
-red = "0xff0000"
-green = "0xd300c4"
-yellow = "0xf57800"
-blue = "0x123e7c"
-cyan = "0x0abdc6"
-magenta = "0x711c91"
-white = "0xd7d7d5"
+black = "#0C0C1E"
+red = "#FF1493"
+green = "#00FF00"
+yellow = "#FFA500"
+blue = "#1E90FF"
+magenta = "#FF00FF"
+cyan = "#00FFFF"
+white = "#D7D7D5"
 
 [colors.primary]
-background = "0x000b1e"
-foreground = "0x0abdc6"
+background = "#0C0C1E"
+foreground = "#00FFFF"
 
 [cursor]
 style = "Beam"
