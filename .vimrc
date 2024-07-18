@@ -1,5 +1,7 @@
 " Load plugins
-source $XDG_CONFIG_HOME/vim/plugins.vim
+if filereadable(expand("$XDG_CONFIG_HOME/vim/plugins.vim"))
+    source $XDG_CONFIG_HOME/vim/plugins.vim
+endif
 
 " General Settings
 set encoding=UTF-8              " Set default encoding to UTF-8
