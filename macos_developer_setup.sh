@@ -131,11 +131,13 @@ brew_formulae=(
     bash-completion
     coreutils
     curl
+    exiftool
     git
     git-delta
     gnu-sed
     node
     packer
+    pngquant
     python
     terraform
     rust
