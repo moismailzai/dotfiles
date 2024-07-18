@@ -135,6 +135,7 @@ brew_formulae=(
     git
     git-delta
     gnu-sed
+    imagemagick
     node
     packer
     pngquant
