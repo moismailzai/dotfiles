@@ -15,7 +15,6 @@ set laststatus=2                " Always display the status line
 
 " UI Settings
 set number                      " Show line numbers
-set relativenumber              " Show relative line numbers
 set ruler                       " Show ruler
 set wrap                        " Wrap lines
 set linebreak                   " Wrap lines at convenient points
@@ -66,10 +65,13 @@ let g:gitgutter_terminal_reports_focus=0
 let NERDTreeShowHidden=1
 
 " Set Airline theme
-let g:airline_theme='angr'
+let g:airline_theme='ayu'
+set termguicolor
+let ayucolor="dark"
+colorscheme ayu
 
 " Key Mappings
-let mapleader = ","             " Set leader key to comma
+let mapleader = ","
 
 " NERDTree mappings
 nnoremap <leader>n :NERDTreeFocus<CR>
