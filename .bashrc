@@ -3,7 +3,7 @@
 # source all .dot files
 for file in ~/.{bash_exports,bash_functions,bash_aliases,bash_prompt,bash_local}; do
   if [[ -f "$file" ]]; then
-      [[ -r "$file" ]] && source "$file"
+    [[ -r "$file" ]] && source "$file"
   fi
 done
 unset file
@@ -12,11 +12,13 @@ unset file
 check_for_userspace_commands
 
 # Export LS_COLORS after we've sourced everything else and have an updated $PATH
-if command -v vivid &> /dev/null; then
-    LS_COLORS="$(vivid generate tokyonight-moon)"
-    export LS_COLORS
+# this affects the output of `ls` and other such console programs, but not the terminal itself (that's done in the
+# terminal emulator's settings)
+if command -v vivid &>/dev/null; then
+  LS_COLORS="$(vivid generate cyberpunk)"
+  export LS_COLORS
 else
-    echo "vivid is not installed. Please install it for custom LS_COLORS."
+  echo "vivid is not installed. Please install it for custom LS_COLORS."
 fi
 
 # linux
@@ -31,7 +33,7 @@ fi
 
 # allow local connections to X as root
 if xset q &>/dev/null; then
-  xhost local:root > /dev/null 2>&1
+  xhost local:root >/dev/null 2>&1
 fi
 
 # configure some bash options

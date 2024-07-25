@@ -5,32 +5,32 @@
 draw_bold_text_with_bright_colors = true
 
 [colors.bright]
-black = "#1C1C2C"
-red = "#FF0000"
-green = "#00FF00"
-yellow = "#FFA500"
-blue = "#00FFFF"
-magenta = "#FF00FF"
-cyan = "#00FFFF"
-white = "#F0F0F0"
+black = "#1a1a38"
+red = "#ff1744"
+green = "#39ff14"
+yellow = "#ffea00"
+blue = "#1e90ff"
+magenta = "#d500f9"
+cyan = "#00e5ff"
+white = "#e6ffcc"
 
 [colors.cursor]
-text = "#0C0C1E"
-cursor = "#00FFFF"
+text = "#0c0c1e"
+cursor = "#00e5ff"
 
 [colors.normal]
-black = "#0C0C1E"
-red = "#FF1493"
-green = "#00FF00"
-yellow = "#FFA500"
-blue = "#1E90FF"
-magenta = "#FF00FF"
-cyan = "#00FFFF"
-white = "#D7D7D5"
+black = "#0c0c1e"
+red = "#ff1744"
+green = "#39ff14"
+yellow = "#ffea00"
+blue = "#1e90ff"
+magenta = "#d500f9"
+cyan = "#00e5ff"
+white = "#b0bec5"
 
 [colors.primary]
-background = "#0C0C1E"
-foreground = "#00FFFF"
+background = "#0c0c1e"
+foreground = "#39ff14"
 
 [cursor]
 style = "Beam"
