@@ -30,7 +30,7 @@ white = "#b0bec5"
 
 [colors.primary]
 background = "#0c0c1e"
-foreground = "#39ff14"
+foreground = "#faf8f5"
 
 [cursor]
 style = "Beam"
@@ -68,8 +68,10 @@ history = 99999
 save_to_clipboard = true
 
 [shell]
-program = "/bin/bash"
-args = ["-ilc", "source ~/.bash_functions && start_zellij"]
+#program = "/bin/bash"
+#args = ["-ilc", "source ~/.bash_functions && start_zellij"]
+program = "zellij"
+args = ["-l", "welcome"]
 
 [window]
 opacity = 0.98

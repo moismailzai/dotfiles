@@ -10,7 +10,7 @@ colors:
   fg1:        "66ff33"  # Light green
   fg2:        "99ff66"  # Lighter green
   fg3:        "ccff99"  # Very light green
-  fg4:        "e6ffcc"  # Palest green
+  fg4:        "faf8f5"  # Off-white
   red:        "ff1744"  # Vivid neon red
   green:      "39ff14"  # Vivid neon green (kept original)
   yellow:     "ffea00"  # Vivid neon yellow
@@ -34,14 +34,14 @@ core:
     foreground: alt_gray
     background: bg
   regular_file:
-    foreground: purple
+    foreground: fg4
     background: bg
   reset_to_normal: {}
   directory:
     foreground: alt_blue
     font-style: bold
   symlink:
-    foreground: blue
+    foreground: aqua
     font-style: italic
   multi_hard_link:
     font-style: bold
@@ -87,7 +87,7 @@ core:
     background: blue
     font-style: bold
   executable_file:
-    foreground: alt_green
+    foreground: purple
     font-style: bold
 
 text:
@@ -101,7 +101,7 @@ text:
     foreground: fg1
     font-style: italic
   configuration:
-    foreground: yellow
+    foreground: gray
     font-style: bold
   other:
     foreground: fg
@@ -112,24 +112,24 @@ markup:
 
 programming:
   source:
-    foreground: green
+    foreground: red
     font-style: bold
   tooling:
-    foreground: alt_green
+    foreground: alt_red
     font-style: bold
     continuous-integration:
       foreground: alt_blue
       font-style: bold
 
 media:
-  foreground: purple
+  foreground: yellow
   font-style: bold
   video:
     foreground: alt_purple
     font-style: bold
 
 office:
-  foreground: alt_blue
+  foreground: fg2
   font-style: bold
 
 archives:
@@ -140,7 +140,7 @@ archives:
     font-style: bold
 
 executable:
-  foreground: alt_green
+  foreground: purple
   font-style: bold
 
 unimportant:

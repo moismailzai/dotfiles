@@ -87,5 +87,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     [[ -d "/usr/local/opt/gnu-which/libexec/gnubin" ]] && PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
 fi
 
+export ANTHROPIC_API_KEY=
+export OPENAI_API_KEY=
+export AIDER_DARK_MODE=true
+export AIDER_MODEL=openai/gpt-4o
+export AIDER_MODEL=anthropic/claude-3-5-sonnet-20240620
+
 # Add local bin to PATH
 export PATH="$HOME/.local/bin:$PATH"

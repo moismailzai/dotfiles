@@ -66,7 +66,6 @@ let NERDTreeShowHidden=1
 
 " Set Airline theme
 let g:airline_theme='ayu'
-set termguicolor
 let ayucolor="dark"
 colorscheme ayu
 
