@@ -68,10 +68,8 @@ history = 99999
 save_to_clipboard = true
 
 [shell]
-#program = "/bin/bash"
-#args = ["-ilc", "source ~/.bash_functions && start_zellij"]
-program = "zellij"
-args = ["-l", "welcome"]
+program = "/bin/bash"
+args = ["-ilc", "zellij -l welcome"]
 
 [window]
 opacity = 0.98
