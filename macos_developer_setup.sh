@@ -118,6 +118,7 @@ brew_casks=(
     font-jetbrains-mono-nerd-font
     imageoptim
     jetbrains-toolbox
+    rectangle
     slack
     skype
     vagrant
@@ -131,6 +132,7 @@ brew_formulae=(
     bash-completion
     coreutils
     curl
+    docker-compose
     exiftool
     git
     git-delta
