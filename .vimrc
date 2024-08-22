@@ -1,6 +1,6 @@
 " Load plugins
-if filereadable(expand("$XDG_CONFIG_HOME/vim/plugins.vim"))
-    source $XDG_CONFIG_HOME/vim/plugins.vim
+if filereadable(expand("~/.config/vim/plugins.vim"))
+    source ~/.config/vim/plugins.vim
 endif
 
 " General Settings
@@ -54,7 +54,7 @@ filetype plugin indent on       " Enable filetype detection, plugin, and indent
 
 " Undo Settings
 set undofile                    " Maintain undo history between sessions
-set undodir=$XDG_CONFIG_HOME/vim/undodir  " Set undo directory
+set undodir=~/.config/vim/undodir  " Set undo directory
 if !isdirectory(&undodir)
     call mkdir(&undodir, 'p', 0700)  " Create undo directory if it doesn't exist
 endif

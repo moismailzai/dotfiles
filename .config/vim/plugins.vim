@@ -3,19 +3,19 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Check if Vundle is installed
-let vundle_readme=expand('$XDG_CONFIG_HOME/vim/bundle/Vundle.vim/README.md')
+let vundle_readme=expand('~/.config/vim/bundle/Vundle.vim/README.md')
 if !filereadable(vundle_readme)
   echo "Installing Vundle.."
   echo ""
-  silent !mkdir -p $XDG_CONFIG_HOME/vim/bundle
-  silent !git clone https://github.com/VundleVim/Vundle.vim.git $XDG_CONFIG_HOME/vim/bundle/Vundle.vim
+  silent !mkdir -p ~/.config/vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/vim/bundle/Vundle.vim
   let vundle_installed=1
 endif
 
 " Set the runtime path to include Vundle and initialize
-set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
+set rtp+=~/.config/vim/bundle/Vundle.vim
 try
-  call vundle#begin('$XDG_CONFIG_HOME/vim/bundle')
+  call vundle#begin('~/.config/vim/bundle')
 
   " Let Vundle manage Vundle, required
   Plugin 'VundleVim/Vundle.vim'
