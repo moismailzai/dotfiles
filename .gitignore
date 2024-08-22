@@ -2,3 +2,5 @@
 .config/vim/undodir/
 .config/vim/bundle/
 !.config/vim/bundle/Vundle.vim
+.aider*
+!.aider.conf.yml
