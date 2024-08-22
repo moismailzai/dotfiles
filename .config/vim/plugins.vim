@@ -3,8 +3,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " Set the runtime path to include Vundle and initialize
-set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
-call vundle#begin('$XDG_CONFIG_HOME/vim/bundle')
+set rtp+=expand('$XDG_CONFIG_HOME/vim/bundle/Vundle.vim')
+call vundle#begin(expand('$XDG_CONFIG_HOME/vim/bundle'))
 
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
