@@ -67,7 +67,12 @@ let NERDTreeShowHidden=1
 " Set Airline theme
 let g:airline_theme='ayu'
 let ayucolor="dark"
-colorscheme ayu
+try
+  colorscheme ayu
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
 
 " Key Mappings
 let mapleader = ","

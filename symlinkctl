@@ -8,7 +8,7 @@ set -euo pipefail
 # Files matching $FILES_NOT_TO_SYMLINK_REGEX are excluded from being symlinked.
 
 # ## Configuration variables ##########################################################################################
-FILES_NOT_TO_SYMLINK_REGEX="git|gitignore|gitmodules|idea|macos_developer_setup.sh|README.md|symlinkctl"
+FILES_NOT_TO_SYMLINK_REGEX="git|gitignore|gitmodules|idea|macos_developer_setup.sh|README.md|symlinkctl|.aider.chat.history.md|.aider.input.history|.aider.tags.cache.v3"
 DIRECTORIES_TO_TRAVERSE=(".config" ".ssh")
 REQUIRED_COMMANDS=("alacritty" "date" "delta" "find" "git" "grep" "logname" "ln" "mv" "ps" "readlink" "sed" "starship" "tput" "tr" "uname" "vim" "vivid" "zellij")
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
